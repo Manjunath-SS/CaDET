@@ -141,7 +141,7 @@ class FrontendModule(models.Model):
 
 class Thehindu(models.Model):
     author = models.CharField(max_length=30, blank=True, null=True)
-    title = models.CharField(max_length=200, blank=True, null=True)
+    title = models.CharField(primary_key=True, max_length=200)
     description = models.CharField(max_length=800, blank=True, null=True)
     url = models.CharField(max_length=200, blank=True, null=True)
     imgurl = models.CharField(max_length=200, blank=True, null=True)
@@ -154,7 +154,7 @@ class Thehindu(models.Model):
 
 class Toi(models.Model):
     author = models.CharField(max_length=30, blank=True, null=True)
-    title = models.CharField(max_length=200, blank=True, null=True)
+    title = models.CharField(primary_key=True, max_length=200)
     description = models.CharField(max_length=800, blank=True, null=True)
     url = models.CharField(max_length=200, blank=True, null=True)
     imgurl = models.CharField(max_length=200, blank=True, null=True)
