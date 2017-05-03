@@ -18,5 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^ctime/', include('ctime.urls')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^thehindu/', include('thehindu.urls')),
+    url(r'^timesofind/', include('timesofind.urls')),
+    #url(r'^admin/', admin.site.urls),
 ]

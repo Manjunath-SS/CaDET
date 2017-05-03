@@ -1,0 +1,26 @@
+{% extends "base_site.html" %}
+{% load i18n admin_static material_form %}
+
+{% block content %}
+<br>
+<div class="row">
+    <div class="col s12 offset-m3 m6">
+        <div class="card">
+            <div class="card-content">
+            <a href>
+                <center><span class="card-title black-text">{% trans 'The Hindu' %}</span><br>{{title}}</center>
+            </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 offset-m3 m6">
+        <div class="card">
+            <div class="card-content">
+                <center><span class="card-title black-text">{% trans 'The Times of India' %}</span></center>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
