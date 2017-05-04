@@ -1,4 +1,6 @@
 from django.shortcuts import render_to_response
+from django.http import HttpResponse
+from django.template import Context, loader
 import re
 import urllib.request
 from .models import Thehindu
@@ -19,9 +21,9 @@ def thehindu(request):
     for tup in mydict:
         Thehindu.objects.create(author=tup['author'],title=tup['title'],description=tup['description'],url=tup['url'],imgurl=tup['urlToImage'],pubat=tup['publishedAt'])
 
-    '''rec=Thehindu.objects.all()
+    rec=Thehindu.objects.all()
     tmpl = loader.get_template("TheHindu.html")
-    cont = Context({'CamsLogin': rec})
-    return HttpResponse(tmpl.render(cont))'''
+    cont = Context({'Thehindu': rec})
+    return HttpResponse(tmpl.render(cont))
 
-    return render_to_response('TheHindu.html')
+    #return render_to_response('TheHindu.html')
