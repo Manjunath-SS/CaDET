@@ -10,10 +10,10 @@ def thehindu(request):
     filtrd=string_data.replace("\"", "")
 
     pattern = r'(author:)|(description:)|(title:)|(url:)|(urlToImage:)|(publishedAt:)'
-    for match in re.finditer(pattern, lists):
+    for match in re.finditer(pattern, filtrd):
         s = match.start()
         e = match.end()
 
-    ult={"title":lists}
+    ult={"title":filtrd}
 
     return render_to_response('TheHindu.html',ult)

@@ -1,3 +1,4 @@
+import ast
 import re
 import urllib.request
 page = urllib.request.urlopen('https://newsapi.org/v1/articles?source=the-hindu&sortBy=top&apiKey=0ca6ea2df18e4d128f1490601cfa5785')
@@ -13,6 +14,7 @@ strng=''.join(list2)
 f = open('myfile.html', 'w')
 f.write(strng)  # python will convert \n to os.linesep
 f.close()
-strng=dict()
-for lm in strng:
+mydict=ast.literal_eval(strng)
+
+for lm in mydict:
     print(lm['author'], lm['urlToImage'], lm['publishedAt'], lm['url'])
