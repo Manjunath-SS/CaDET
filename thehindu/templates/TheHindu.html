@@ -5,12 +5,16 @@
 <br>
 {% for tupl in Thehindu %}
 <div class="row">
-    <a href='/thehindu/'>
+    <a href={{tupl.url}}>
     <div class="col s12 offset-m3 m6">
         <div class="card">
             <div class="card-content">
-                <center><span class="card-title black-text">{% trans 'Content' %}</span><br></center>
-            {{tupl.title}}
+                <font color="black"> <justify><h5><b>{{tupl.title}}</b></h5><br></justify> </font>
+
+                    <center><img src="{{tupl.imgurl}}" width=100%/> </center><br>
+            <font color="black"> {{tupl.description}} <br></font>
+            <font color="grey"> <p align="right">{{tupl.pubat}} <br>
+            Author: {{tupl.author}}</p></font>
             </div>
         </div>
     </div>
