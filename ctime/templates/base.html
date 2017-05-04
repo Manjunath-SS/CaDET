@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-        <title>CiTech Times</title>
+        <title>Cambridge Times</title>
         {% block css %}
         {% include 'admin/includes/material_css.html' %}
         {% block extrastyle %}{% endblock %}
@@ -35,7 +35,7 @@
 
                         <div class="brand-logo">
                             {% block page_title %}
-                            <a href="/login" class="page-title">{% block brand-logo %}{% trans 'CiTech Times' %}{% endblock %}</a>
+                            {% block brand-logo %}{% trans 'Cambridge Times' %}{% endblock %}
                             {% endblock %}
                         </div>
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -51,8 +51,7 @@
                             {% endif %}
                             {% if user.is_authenticated %}
                             <li><a href="{% url 'admin:logout' %}" data-turbolinks="false"><i class="material-icons right">exit_to_app</i>{% trans "Logout" %}</a></li>
-                            {% else %}
-                            <li><a href="/login/admin/" data-turbolinks="false"><i class="material-icons right">lock_open</i>{% trans "Admin" %}</a></li>
+                            
                             {% endif %}
                             {% endblock %}
                         </ul>
