@@ -17,7 +17,7 @@ def thehindu(request):
     mydict=ast.literal_eval(strng)
 
     for tup in mydict:
-        Thehindu.objects.create(author=tup['author'],title=tup['url'])
+        Thehindu.objects.create(author=tup['author'],title=tup['title'],description=tup['description'],url=tup['url'],imgurl=tup['urlToImage'],pubat=tup['publishedAt'])
 
     '''rec=Thehindu.objects.all()
     tmpl = loader.get_template("TheHindu.html")
