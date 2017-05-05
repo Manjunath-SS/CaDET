@@ -4,6 +4,7 @@ import re
 import urllib.request
 from .models import Toi
 import ast
+import datetime
 
 def timesofind(request):
     try:
@@ -24,7 +25,8 @@ def timesofind(request):
                 Toi.objects.create(author=tup2['author'],title=tup2['title'],description=tup2['description'],url=tup2['url'],imgurl=tup2['urlToImage'],pubat=tup2['publishedAt'])
 
     finally:
+        today = datetime.datetime.today()
         rec2=Toi.objects.all().order_by('-pubat')
         tmpl2 = loader.get_template("TimesOfIndia.html")
-        cont2 = Context({'Toi': rec2})
+        cont2 = Context({'Toi': rec2, 'Daa': today})
         return HttpResponse(tmpl2.render(cont2))

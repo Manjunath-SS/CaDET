@@ -1,9 +1,8 @@
 from django.http import HttpResponse
 from django.template import Context, loader
-import re
 import urllib.request
 from .models import Thehindu
-import ast
+import ast, re, datetime, requests
 
 def thehindu(request):
     try:
@@ -25,7 +24,8 @@ def thehindu(request):
                 Thehindu.objects.create(author=tup['author'],title=tup['title'],description=tup['description'],url=tup['url'],imgurl=tup['urlToImage'],pubat=tup['publishedAt'])
 
     finally:
+        today = datetime.datetime.today()
         rec=Thehindu.objects.all().order_by('-pubat')
         tmpl = loader.get_template("TheHindu.html")
-        cont = Context({'Thehindu': rec})
+        cont = Context({'Thehindu': rec, 'Daa': today})
         return HttpResponse(tmpl.render(cont))
