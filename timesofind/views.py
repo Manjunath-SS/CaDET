@@ -16,10 +16,11 @@ def timesofind(request):
         regex3 = r"\{.*\}"
         list3=re.findall(regex3,li2)
         strng2=''.join(list3)
-        mydict2=ast.literal_eval(strng2)
 
         for tup2 in mydict2:
             if not Toi.objects.filter(title=tup2['title']):
+                if not tup2['author']:
+                    tup2['author']="Anonymous"
                 Toi.objects.create(author=tup2['author'],title=tup2['title'],description=tup2['description'],url=tup2['url'],imgurl=tup2['urlToImage'],pubat=tup2['publishedAt'])
 
     finally:
