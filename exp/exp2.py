@@ -1,7 +1,8 @@
 import bs4
 import urllib.request
+import requests
 
-webpage=str(urllib.request.urlopen("https://newsapi.org/v1/articles?source=the-hindu&sortBy=top&apiKey=0ca6ea2df18e4d128f1490601cfa5785").read())
+webpage=str(urllib.request.urlopen("https://newsapi.org/v1/articles?source=the-hindu&sortBy=top&apiKey=f4585a594fdc47c0a0ca949452a9a906").read())
 soup = bs4.BeautifulSoup(webpage)
 
 print(soup.get_text())

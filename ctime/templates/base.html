@@ -36,7 +36,8 @@
                         <div class="brand-logo">
                             {% block page_title %}
                             {% block brand-logo %}{% trans 'Cambridge Times' %}{% endblock %}
-                            {% endblock %}
+
+                            {% endblock %}<br><font size="3"> Thursday, 4th May 2017</font>
                         </div>
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
                             {% block userlinks %}
@@ -51,7 +52,7 @@
                             {% endif %}
                             {% if user.is_authenticated %}
                             <li><a href="{% url 'admin:logout' %}" data-turbolinks="false"><i class="material-icons right">exit_to_app</i>{% trans "Logout" %}</a></li>
-                            
+
                             {% endif %}
                             {% endblock %}
                         </ul>

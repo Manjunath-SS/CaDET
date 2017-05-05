@@ -3,16 +3,22 @@
 
 {% block content %}
 <br>
+{% for tupl2 in Toi %}
 <div class="row">
-    <a href='/thehindu/'>
+    <a href={{tupl2.url}}>
     <div class="col s12 offset-m3 m6">
         <div class="card">
             <div class="card-content">
-                <center><span class="card-title black-text">{% trans 'Content' %}</span><br></center>
+                <font color="black"> <justify><h5><b>{{tupl2.title}}</b></h5><br></justify> </font>
 
+                    <center><img src="{{tupl2.imgurl}}" width=100%/> </center><br>
+            <font color="black"> {{tupl2.description}} <br></font>
+            <font color="grey"> <p align="right">{{tupl2.pubat}} <br>
+            Author: {{tupl2.author}}</p></font>
             </div>
         </div>
     </div>
     </a>
 </div>
+{% endfor %}
 {% endblock %}

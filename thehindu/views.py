@@ -1,4 +1,3 @@
-from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.template import Context, loader
 import re
@@ -22,9 +21,7 @@ def thehindu(request):
         if not Thehindu.objects.filter(title=tup['title']):
             Thehindu.objects.create(author=tup['author'],title=tup['title'],description=tup['description'],url=tup['url'],imgurl=tup['urlToImage'],pubat=tup['publishedAt'])
 
-    rec=Thehindu.objects.all()
+    rec=Thehindu.objects.all().order_by('-pubat')
     tmpl = loader.get_template("TheHindu.html")
     cont = Context({'Thehindu': rec})
     return HttpResponse(tmpl.render(cont))
-
-    #return render_to_response('TheHindu.html')
