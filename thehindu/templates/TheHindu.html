@@ -3,18 +3,18 @@
 
 {% block content %}
 <br>
-{% for tupl in Thehindu %}
+{% for tup in Thehindu %}
 <div class="row">
-    <a href={{tupl.url}}>
+    <a href={{tup.url}}>
     <div class="col s12 offset-m3 m6">
         <div class="card">
             <div class="card-content">
-                <font color="black"> <justify><h5><b>{{tupl.title}}</b></h5><br></justify> </font>
+                <font color="black"> <justify><h5><b>{{tup.title}}</b></h5><br></justify> </font>
 
-                    <center><img src="{{tupl.imgurl}}" width=100%/> </center><br>
-            <font color="black"> {{tupl.description}} <br></font>
-            <font color="grey"> <p align="right">{{tupl.pubat}} <br>
-            Author: {{tupl.author}}</p></font>
+                    <center><img src="{{tup.imgurl}}" width=100%/> </center><br>
+            <font color="black"> {{tup.description}} <br></font>
+            <font color="grey"> <p align="right">{{tup.pubat}} <br>
+            Author: {{tup.author}}</p></font>
             </div>
         </div>
     </div>

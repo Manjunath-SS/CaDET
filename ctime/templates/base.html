@@ -35,7 +35,7 @@
 
                         <div class="brand-logo">
                             {% block page_title %}
-                            {% block brand-logo %}{% trans 'Cambridge Times' %}{% endblock %}
+                            {% block brand-logo %}{% trans 'CaDET' %}{% endblock %}
 
                             {% endblock %}<br><font size="3">  {{ Daa|date:"D, d M Y" }}</font>
                         </div>
@@ -52,7 +52,8 @@
                             {% endif %}
                             {% if user.is_authenticated %}
                             <li><a href="{% url 'admin:logout' %}" data-turbolinks="false"><i class="material-icons right">exit_to_app</i>{% trans "Logout" %}</a></li>
-
+                            {% else %}
+                            <li><font size="6">{% trans "Cambridge Daily Edition Times" %}</font></li>
                             {% endif %}
                             {% endblock %}
                         </ul>

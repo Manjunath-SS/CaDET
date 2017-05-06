@@ -1,32 +1,33 @@
 from django.http import HttpResponse
 from django.template import Context, loader
-import re
 import urllib.request
 from .models import Toi
-import ast
-import datetime
+import ast, re, datetime, requests
 
 def timesofind(request):
     try:
-        page2=urllib.request.urlopen('https://newsapi.org/v1/articles?source=the-times-of-india&sortBy=top&apiKey=0ca6ea2df18e4d128f1490601cfa5785')
-        extracted_data2=page2.read()
-        string_data2=str(extracted_data2,'utf-8')
-        regex2 = r"\[.*\]"
-        lists2=re.findall(regex2,string_data2)
-        li2=''.join(lists2)
-        regex3 = r"\{.*\}"
-        list3=re.findall(regex3,li2)
-        strng2=''.join(list3)
-
-        for tup2 in mydict2:
-            if not Toi.objects.filter(title=tup2['title']):
-                if not tup2['author']:
-                    tup2['author']="Anonymous"
-                Toi.objects.create(author=tup2['author'],title=tup2['title'],description=tup2['description'],url=tup2['url'],imgurl=tup2['urlToImage'],pubat=tup2['publishedAt'])
+        #page=urllib.request.urlopen('https://newsapi.org/v1/articles?source=the-hindu&sortBy=top&apiKey=0ca6ea2df18e4d128f1490601cfa5785')
+        #extracted_data=page.read()
+        #string_data=str(extracted_data,'utf-8')
+        response=requests.get('https://newsapi.org/v1/articles?source=the-times-of-india&sortBy=top&apiKey=0ca6ea2df18e4d128f1490601cfa5785', verify=False)
+        extracted_data=response.content
+        string_data=str(extracted_data,'utf-8')
+        regex = r"\[.*\]"
+        lists=re.findall(regex,string_data)
+        li=''.join(lists)
+        regex2 = r"\{.*\}"
+        list2=re.findall(regex2,li)
+        strng=''.join(list2)
+        mydict=ast.literal_eval(strng)
+        for tup in mydict:
+            if not Toi.objects.filter(title=tup['title']):
+                if not tup['author']:
+                    tup['author']="Anonymous"
+                Toi.objects.create(author=tup['author'],title=tup['title'],description=tup['description'],url=tup['url'],imgurl=tup['urlToImage'],pubat=tup['publishedAt'])
 
     finally:
         today = datetime.datetime.today()
-        rec2=Toi.objects.all().order_by('-pubat')
-        tmpl2 = loader.get_template("TimesOfIndia.html")
-        cont2 = Context({'Toi': rec2, 'Daa': today})
-        return HttpResponse(tmpl2.render(cont2))
+        rec=Toi.objects.all().order_by('pubat')
+        tmpl = loader.get_template("TimesOfIndia.html")
+        cont = Context({'Toi': rec, 'Daa': today})
+        return HttpResponse(tmpl.render(cont))
