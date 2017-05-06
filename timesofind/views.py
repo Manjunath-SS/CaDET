@@ -9,7 +9,7 @@ def timesofind(request):
         #page=urllib.request.urlopen('https://newsapi.org/v1/articles?source=the-hindu&sortBy=top&apiKey=0ca6ea2df18e4d128f1490601cfa5785')
         #extracted_data=page.read()
         #string_data=str(extracted_data,'utf-8')
-        response=requests.get('https://newsapi.org/v1/articles?source=the-times-of-india&sortBy=top&apiKey=0ca6ea2df18e4d128f1490601cfa5785', verify=False)
+        response=requests.get(' https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=0ca6ea2df18e4d128f1490601cfa5785', verify=False)
         extracted_data=response.content
         string_data=str(extracted_data,'utf-8')
         regex = r"\[.*\]"
@@ -27,7 +27,7 @@ def timesofind(request):
 
     finally:
         today = datetime.datetime.today()
-        rec=Toi.objects.all().order_by('pubat')
+        rec=Toi.objects.all().order_by('-pubat')
         tmpl = loader.get_template("TimesOfIndia.html")
         cont = Context({'Toi': rec, 'Daa': today})
         return HttpResponse(tmpl.render(cont))
